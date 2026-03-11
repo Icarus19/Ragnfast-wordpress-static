@@ -1,0 +1,44 @@
+/**
+ * I don't think any of these rules work while the header is sticky, so either sticky, or overflow with reactive element
+ * If you want to change between these options,
+ * Go to the individual template
+ * Remove the wp:group with sticky
+ */
+
+/* Sticky wrapper owns stacking */
+.wp-block-group.is-position-sticky {
+    position: sticky;
+    background-color: rgba(240, 240, 245, 0.75) !important;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Template part is now passive */
+header.wp-block-template-part {
+    position: relative;
+    z-index: auto;
+    overflow: visible;
+}
+
+/* Inner layout */
+.header-inner {
+    position: relative;
+}
+
+/* Logo breakout */
+.header-inner .wp-block-site-logo {
+    position: relative;
+    top: 3rem;
+    z-index: 2;
+}
+
+/* Hover interaction */
+.wp-block-site-logo img {
+    transition: filter 0.3s ease, transform 0.3s ease;
+    filter: drop-shadow(0 0 6px rgba(70, 130, 180, 0.55));
+}
+
+.wp-block-site-logo:hover img {
+    filter: drop-shadow(0 0 14px rgba(170,190,255,0.85));
+    transform: translateY(-2px);
+}

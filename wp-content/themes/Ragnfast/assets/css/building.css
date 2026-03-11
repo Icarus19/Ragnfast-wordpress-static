@@ -1,0 +1,113 @@
+.building-hero-container {
+    display: flex;
+    flex-wrap: wrap; /* allow stacking on very small screens */
+    align-items: stretch; /* make both columns equal height */
+}
+
+/* IMAGE */
+.building-hero-image {
+    flex: 1 1 50%; /* flexible, start at 50% */
+    min-width: 300px; /* prevent collapsing too small */
+    max-width: 1200px; /* optional: prevent image from taking too much space */
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 4 / 3; /* maintain 4:3 ratio */
+}
+
+.building-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    display: block;
+}
+
+/* TEXT */
+.building-hero-text {
+    flex: 1 1 50%; /* flexible, start at 50% */
+    min-width: 250px; /* text won’t shrink too much */
+    box-sizing: border-box;
+    padding: 1rem;
+    line-height: 1.6;
+    word-wrap: break-word; /* allow long text to wrap */
+}
+
+.building-hero-text p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.building-hero-text p + p {
+    margin-top: 0.75rem;
+}
+
+/* MOBILE: stacked */
+@media (max-width: 767px) {
+    .building-hero-container {
+        flex-direction: column; /* stack image and text */
+    }
+
+    .building-hero-image,
+    .building-hero-text {
+        flex: 1 1 100%; /* full width */
+        width: 100%;
+    }
+
+    .building-hero-image {
+        aspect-ratio: auto; /* let image scale naturally */
+    }
+}
+
+/* Just learned that Css does not always update if it randomly got cashed
+Overriding parent theme padding */
+.wp-block-group.is-layout-flow,
+.wp-block-group nav[aria-label="Post navigation"] {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+/* Grid override */
+.buildings-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(425px, 1fr));
+}
+
+.buildings-grid .building-card {
+    display: flex;              /* flex ensures content stacks vertically */
+    flex-direction: column;     /* top-to-bottom layout */
+    align-items: center;        /* center text and images */
+    width: 100%;                /* fill the grid column */
+    box-sizing: border-box;
+    background: #f9f9f9;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-decoration: none;      /* remove underline for <a> */
+    color: inherit;             /* ensure text color matches theme */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.buildings-grid .building-card img {
+    height: 300px;
+    width: 400px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.buildings-grid .building-card h2 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.buildings-grid .building-card p {
+    font-size: 0.9rem;
+    margin: 0.25rem 0;
+}
+
+.buildings-grid .building-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
